@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Douglas Democrats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                200: '#bae6fd',
+                300: '#7dd3fc',
+                400: '#38bdf8',
+                500: '#0ea5e9', // Sky 500
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .group:hover .group-hover\:visible {
+        visibility: visible;
+      }
+      .group:hover .group-hover\:opacity-100 {
+        opacity: 1;
+      }
+      .group:hover .group-hover\:translate-y-0 {
+        transform: translateY(0);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-50 text-slate-800 antialiased selection:bg-primary-200 selection:text-primary-900">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a href="#" class="flex-shrink-0 flex items-center gap-2 group">
+             <div class="bg-primary-500 text-white p-2 rounded-lg group-hover:bg-primary-600 transition-colors">
+               <span class="font-bold text-xl tracking-tighter">DD</span>
+             </div>
+             <div class="flex flex-col logo-text transition-colors text-white">
+               <span class="font-bold text-lg leading-none">Douglas</span>
+               <span class="text-sm font-medium tracking-wide uppercase">Democrats</span>
+             </div>
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden lg:flex items-center gap-6">
+            <!-- Main Links -->
+            <a href="#" class="nav-item text-sm font-semibold text-white/90 hover:text-white transition-colors duration-200">Home</a>
+            <a href="#about" class="nav-item text-sm font-semibold text-white/90 hover:text-white transition-colors duration-200">About</a>
+            <a href="#news" class="nav-item text-sm font-semibold text-white/90 hover:text-white transition-colors duration-200">News</a>
+            <a href="#volunteer" class="nav-item text-sm font-semibold text-white/90 hover:text-white transition-colors duration-200">Volunteer</a>
+            <a href="#merch" class="nav-item text-sm font-semibold text-white/90 hover:text-white transition-colors duration-200">DC Dems Merchandise</a>
+
+            <!-- More Dropdown -->
+            <div class="relative group">
+              <button class="nav-item flex items-center gap-1 text-sm font-semibold text-white/90 hover:text-white transition-colors duration-200">
+                More
+                <i data-lucide="chevron-down" class="w-4 h-4 group-hover:rotate-180 transition-transform duration-200"></i>
+              </button>
+              
+              <div class="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 border border-slate-100">
+                <a href="#bylaws" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Bylaws</a>
+                <a href="#contact" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Contact Us</a>
+                <a href="#help" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Help Wanted</a>
+                <a href="#membership" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Membership</a>
+                <a href="#early-voting" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Early Voting</a>
+                <a href="#precincts" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Voter Precincts</a>
+                <a href="#sponsors" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Friends and Sponsors</a>
+                <a href="#events" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Events</a>
+              </div>
+            </div>
+
+            <a href="#" class="flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm shadow-lg transition-transform hover:scale-105 bg-white text-primary-600 hover:bg-primary-50 donate-btn">
+              <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
+              Donate
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="lg:hidden flex items-center">
+            <button id="mobile-menu-btn" class="p-2 rounded-md text-white mobile-btn">
+              <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 max-h-[80vh] overflow-y-auto">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+          <a href="#" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">Home</a>
+          <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">About</a>
+          <a href="#news" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">News</a>
+          <a href="#volunteer" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">Volunteer</a>
+          <a href="#merch" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">DC Dems Merchandise</a>
+          
+          <!-- Mobile More Submenu -->
+          <div>
+            <button id="mobile-submenu-btn" class="flex items-center justify-between w-full px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+              More
+              <i data-lucide="chevron-down" id="mobile-chevron" class="w-4 h-4 transition-transform duration-200"></i>
+            </button>
+            <div id="mobile-submenu" class="hidden pl-6 space-y-1 bg-slate-50/50 rounded-lg mb-2">
+                <a href="#bylaws" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Bylaws</a>
+                <a href="#contact" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Contact Us</a>
+                <a href="#help" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Help Wanted</a>
+                <a href="#membership" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Membership</a>
+                <a href="#early-voting" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Early Voting</a>
+                <a href="#precincts" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Voter Precincts</a>
+                <a href="#sponsors" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Friends and Sponsors</a>
+                <a href="#events" class="block px-3 py-2.5 rounded-md text-sm font-medium text-slate-500 hover:text-slate-900">Events</a>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 mt-4">
+            <a href="#" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary-500 text-white rounded-xl font-bold hover:bg-primary-600 transition-colors">
+              <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-slate-900 min-h-screen flex items-center overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img src="https://picsum.photos/seed/douglas/1920/1080" alt="Community gathering" class="w-full h-full object-cover opacity-40" />
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-xs font-bold uppercase tracking-widest mb-6">
+            <span class="w-2 h-2 rounded-full bg-primary-500 animate-ping"></span>
+            Official Committee Website
+          </div>
+          
+          <h1 class="text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+            Building a <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-primary-500">Better Future</span> for Douglas County
+          </h1>
+          
+          <p class="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl font-medium">
+            County Committee of the Democratic Party of Georgia
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-bold text-lg transition-all shadow-lg shadow-primary-500/30 flex items-center justify-center gap-2 group">
+              Donate
+              <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#volunteer" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+              Volunteer
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Cards Section -->
+    <div class="bg-slate-50 pb-20">
+      <section class="py-0 relative -mt-24 z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-b-4 border-primary-500">
+              <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center text-primary-500 mb-6">
+                <i data-lucide="vote" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3">Voter Services</h3>
+              <p class="text-slate-600 mb-6">Need to register? Looking for your polling place? Want to vote by mail? We have all the info you need.</p>
+              <a href="#voting" class="text-primary-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                Get Voter Info <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-b-4 border-blue-600">
+              <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                <i data-lucide="users" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3">Meet Candidates</h3>
+              <p class="text-slate-600 mb-6">Learn about the dedicated public servants running to represent you and improve our community.</p>
+              <a href="#candidates" class="text-blue-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View Candidates <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-b-4 border-slate-800">
+              <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-slate-800 mb-6">
+                <i data-lucide="hand-heart" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3">Volunteer</h3>
+              <p class="text-slate-600 mb-6">Our strength comes from people like you. Join us to canvass, phone bank, or help at events.</p>
+              <a href="#volunteer" class="text-slate-800 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                Get Involved <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Events Preview Section -->
+      <section id="events" class="mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span class="text-primary-600 font-bold tracking-wider uppercase text-sm mb-2 block">Upcoming Events</span>
+              <h2 class="text-4xl font-bold text-slate-900 mb-6">Join the Movement</h2>
+              <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                Politics happens in person. Whether it's a monthly meeting, a fundraiser, or a community cleanup, showing up is the first step to making a difference.
+              </p>
+              <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-8 transition-colors">
+                View All Events
+              </a>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-2 border border-slate-100">
+               <div class="space-y-2">
+                   <!-- Event 1 -->
+                   <div class="group p-4 rounded-xl hover:bg-slate-50 transition-colors flex gap-4">
+                     <div class="shrink-0 flex flex-col items-center justify-center w-16 h-16 bg-primary-100 text-primary-700 rounded-lg border border-primary-200">
+                       <span class="text-xs font-bold uppercase">Nov</span>
+                       <span class="text-xl font-extrabold">20</span>
+                     </div>
+                     <div>
+                       <h4 class="font-bold text-slate-900 group-hover:text-primary-600 transition-colors text-lg">Monthly Committee Meeting</h4>
+                       <div class="flex items-center gap-2 text-slate-500 text-sm mt-1">
+                         <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                         Douglasville Conference Center
+                       </div>
+                     </div>
+                   </div>
+                   <!-- Event 2 -->
+                   <div class="group p-4 rounded-xl hover:bg-slate-50 transition-colors flex gap-4">
+                     <div class="shrink-0 flex flex-col items-center justify-center w-16 h-16 bg-primary-100 text-primary-700 rounded-lg border border-primary-200">
+                       <span class="text-xs font-bold uppercase">Weekly</span>
+                       <span class="text-xl font-extrabold">Tue</span>
+                     </div>
+                     <div>
+                       <h4 class="font-bold text-slate-900 group-hover:text-primary-600 transition-colors text-lg">Phone Banking for 2024</h4>
+                       <div class="flex items-center gap-2 text-slate-500 text-sm mt-1">
+                         <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                         Virtual (Zoom)
+                       </div>
+                     </div>
+                   </div>
+                   <!-- Event 3 -->
+                   <div class="group p-4 rounded-xl hover:bg-slate-50 transition-colors flex gap-4">
+                     <div class="shrink-0 flex flex-col items-center justify-center w-16 h-16 bg-primary-100 text-primary-700 rounded-lg border border-primary-200">
+                       <span class="text-xs font-bold uppercase">Dec</span>
+                       <span class="text-xl font-extrabold">15</span>
+                     </div>
+                     <div>
+                       <h4 class="font-bold text-slate-900 group-hover:text-primary-600 transition-colors text-lg">Annual Gala Dinner</h4>
+                       <div class="flex items-center gap-2 text-slate-500 text-sm mt-1">
+                         <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                         Douglasville Cultural Arts Center
+                       </div>
+                     </div>
+                   </div>
+               </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <!-- Merch Section -->
+    <section id="merch" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-600 rounded-full blur-3xl opacity-10 -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-primary-500/20 border border-primary-500/30 text-primary-300 text-xs font-bold uppercase tracking-wider mb-4">
+                        Official Store
+                    </span>
+                    <h2 class="text-4xl font-bold text-white mb-4">Douglas Democrats Merchandise</h2>
+                    <p class="text-slate-400 max-w-2xl text-lg">
+                        Show your pride for Douglas Democrats with our official merchandise. Every purchase directly supports our efforts to elect Democrats.
+                    </p>
+                </div>
+                <a href="#" class="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-bold hover:bg-primary-50 transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    Shop All Items
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Merch Item 1 -->
+                <a href="#" class="group block bg-slate-800 rounded-xl overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="aspect-square overflow-hidden relative">
+                         <img src="https://picsum.photos/seed/merch1/400/400" alt="Douglas Dems T-Shirt" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Douglas Dems T-Shirt</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-300 font-medium">$25.00</span>
+                            <span class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Merch Item 2 -->
+                <a href="#" class="group block bg-slate-800 rounded-xl overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="aspect-square overflow-hidden relative">
+                         <img src="https://picsum.photos/seed/merch2/400/400" alt="Campaign Mug" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Campaign Mug</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-300 font-medium">$15.00</span>
+                            <span class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                 <!-- Merch Item 3 -->
+                 <a href="#" class="group block bg-slate-800 rounded-xl overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="aspect-square overflow-hidden relative">
+                         <img src="https://picsum.photos/seed/merch3/400/400" alt="Vote 2024 Tote Bag" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Vote 2024 Tote Bag</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-300 font-medium">$20.00</span>
+                            <span class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                 <!-- Merch Item 4 -->
+                 <a href="#" class="group block bg-slate-800 rounded-xl overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="aspect-square overflow-hidden relative">
+                         <img src="https://picsum.photos/seed/merch4/400/400" alt="Douglas Democrats Cap" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Douglas Democrats Cap</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-300 font-medium">$22.00</span>
+                            <span class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-end mb-12">
+          <div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-4">Latest Updates</h2>
+            <p class="text-slate-600 max-w-2xl">Stay informed about our recent victories, upcoming community initiatives, and press releases.</p>
+          </div>
+          <a href="#" class="hidden md:flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+            View All News <i data-lucide="arrow-right" class="w-4.5 h-4.5"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- News Item 1 -->
+          <article class="group flex flex-col h-full bg-slate-50 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://picsum.photos/seed/news1/600/400" alt="Douglas Dems Sweep Local Elections" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary-600 uppercase tracking-wider shadow-sm">Press Release</div>
+            </div>
+            <div class="flex-1 p-6 flex flex-col">
+              <div class="flex items-center gap-2 text-slate-400 text-xs font-medium mb-3">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                Nov 8, 2024
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">Douglas Dems Sweep Local Elections</h3>
+              <p class="text-slate-600 mb-6 text-sm flex-1 leading-relaxed line-clamp-3">A historic night for Democrats in Douglas County as we secure key seats on the county commission and judicial benches.</p>
+              <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700">Read Full Story</a>
+            </div>
+          </article>
+           <!-- News Item 2 -->
+           <article class="group flex flex-col h-full bg-slate-50 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://picsum.photos/seed/news2/600/400" alt="Voter Registration Drive Success" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary-600 uppercase tracking-wider shadow-sm">Community</div>
+            </div>
+            <div class="flex-1 p-6 flex flex-col">
+              <div class="flex items-center gap-2 text-slate-400 text-xs font-medium mb-3">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                Oct 15, 2024
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">Voter Registration Drive Success</h3>
+              <p class="text-slate-600 mb-6 text-sm flex-1 leading-relaxed line-clamp-3">Over 500 new voters registered this weekend thanks to our dedicated volunteers across the county.</p>
+              <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700">Read Full Story</a>
+            </div>
+          </article>
+           <!-- News Item 3 -->
+           <article class="group flex flex-col h-full bg-slate-50 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://picsum.photos/seed/news3/600/400" alt="Upcoming Town Hall: Public Safety" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary-600 uppercase tracking-wider shadow-sm">Events</div>
+            </div>
+            <div class="flex-1 p-6 flex flex-col">
+              <div class="flex items-center gap-2 text-slate-400 text-xs font-medium mb-3">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                Oct 1, 2024
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">Upcoming Town Hall: Public Safety</h3>
+              <p class="text-slate-600 mb-6 text-sm flex-1 leading-relaxed line-clamp-3">Join County Commissioners for an open discussion on improving public safety and community policing.</p>
+              <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700">Read Full Story</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <!-- Brand -->
+          <div>
+            <div class="flex items-center gap-2 mb-6">
+               <div class="bg-primary-500 text-white p-1.5 rounded">
+                 <span class="font-bold text-lg">DD</span>
+               </div>
+               <span class="font-bold text-xl">Douglas Dems</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Working tirelessly to elect Democrats who share our values of equality, justice, and opportunity for all Douglas County residents.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-slate-400 hover:text-white transition-colors bg-slate-800 p-2 rounded-full"><i data-lucide="facebook" class="w-4.5 h-4.5"></i></a>
+              <a href="#" class="text-slate-400 hover:text-white transition-colors bg-slate-800 p-2 rounded-full"><i data-lucide="twitter" class="w-4.5 h-4.5"></i></a>
+              <a href="#" class="text-slate-400 hover:text-white transition-colors bg-slate-800 p-2 rounded-full"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="font-bold text-lg mb-4 text-primary-400">Quick Links</h3>
+            <ul class="space-y-3">
+              <li><a href="#about" class="text-slate-300 hover:text-primary-300 text-sm transition-colors">About Us</a></li>
+              <li><a href="#candidates" class="text-slate-300 hover:text-primary-300 text-sm transition-colors">Meet the Candidates</a></li>
+              <li><a href="#voting" class="text-slate-300 hover:text-primary-300 text-sm transition-colors">Voter Services</a></li>
+              <li><a href="#events" class="text-slate-300 hover:text-primary-300 text-sm transition-colors">Events Calendar</a></li>
+              <li><a href="#volunteer" class="text-slate-300 hover:text-primary-300 text-sm transition-colors">Volunteer</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="font-bold text-lg mb-4 text-primary-400">Contact Us</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-slate-300 text-sm">
+                <i data-lucide="map-pin" class="w-4.5 h-4.5 text-primary-500 shrink-0 mt-0.5"></i>
+                <span>PO Box 1234<br />Douglasville, GA 30133</span>
+              </li>
+              <li class="flex items-center gap-3 text-slate-300 text-sm">
+                <i data-lucide="phone" class="w-4.5 h-4.5 text-primary-500 shrink-0"></i>
+                <span>(770) 555-0123</span>
+              </li>
+              <li class="flex items-center gap-3 text-slate-300 text-sm">
+                <i data-lucide="mail" class="w-4.5 h-4.5 text-primary-500 shrink-0"></i>
+                <span>info@douglasdems.org</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+             <h3 class="font-bold text-lg mb-4 text-primary-400">Join the Fight</h3>
+             <p class="text-slate-400 text-sm mb-4">Sign up for our newsletter to get the latest updates.</p>
+             <form class="space-y-2" onsubmit="event.preventDefault()">
+               <input type="email" placeholder="Your email address" class="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500" />
+               <button class="w-full py-2.5 bg-primary-600 hover:bg-primary-500 text-white rounded-lg text-sm font-bold transition-colors">Subscribe</button>
+             </form>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-slate-500 text-xs">© 2024 Douglas County Democratic Committee. All rights reserved.</p>
+          <div class="px-4 py-2 border border-slate-700 rounded bg-slate-800/50">
+             <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold">Paid for by the Douglas County Democratic Committee</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Logic -->
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Mobile Menu Logic
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
+      const mobileSubmenu = document.getElementById('mobile-submenu');
+      const mobileChevron = document.getElementById('mobile-chevron');
+
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        // Toggle icon between menu and x could be added here
+      });
+
+      mobileSubmenuBtn.addEventListener('click', () => {
+        mobileSubmenu.classList.toggle('hidden');
+        mobileChevron.classList.toggle('rotate-180');
+      });
+
+      // Scroll Effect
+      const nav = document.getElementById('navbar');
+      const navItems = document.querySelectorAll('.nav-item');
+      const donateBtn = document.querySelector('.donate-btn');
+      const logoTexts = document.querySelectorAll('.logo-text');
+      const mobileBtnIcon = document.querySelector('.mobile-btn');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          nav.classList.add('bg-white', 'shadow-md', 'py-2');
+          nav.classList.remove('bg-transparent', 'py-4');
+          
+          navItems.forEach(item => {
+            item.classList.remove('text-white/90', 'hover:text-white');
+            item.classList.add('text-slate-600', 'hover:text-primary-500');
+          });
+
+          logoTexts.forEach(lt => {
+            lt.classList.remove('text-white');
+            lt.classList.add('text-slate-800');
+          });
+
+          donateBtn.classList.remove('bg-white', 'text-primary-600', 'hover:bg-primary-50');
+          donateBtn.classList.add('bg-primary-500', 'text-white', 'hover:bg-primary-600');
+
+          mobileBtnIcon.classList.remove('text-white');
+          mobileBtnIcon.classList.add('text-slate-800');
+
+        } else {
+          nav.classList.remove('bg-white', 'shadow-md', 'py-2');
+          nav.classList.add('bg-transparent', 'py-4');
+
+          navItems.forEach(item => {
+            item.classList.add('text-white/90', 'hover:text-white');
+            item.classList.remove('text-slate-600', 'hover:text-primary-500');
+          });
+
+          logoTexts.forEach(lt => {
+            lt.classList.add('text-white');
+            lt.classList.remove('text-slate-800');
+          });
+
+          donateBtn.classList.add('bg-white', 'text-primary-600', 'hover:bg-primary-50');
+          donateBtn.classList.remove('bg-primary-500', 'text-white', 'hover:bg-primary-600');
+
+          mobileBtnIcon.classList.add('text-white');
+          mobileBtnIcon.classList.remove('text-slate-800');
+        }
+      });
+    </script>
+  </body>
+</html>
